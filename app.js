@@ -9,7 +9,7 @@ new Vue({
     },
     newNameText: "",
     guestName: [],
-    eventCapacity: 5,
+    eventCapacity: 10,
     eventCapacityPercentage: 0,
   },
   methods: {
@@ -17,8 +17,14 @@ new Vue({
       if (this.newNameText.length > 0 && this.eventCapacityPercentage < 100) {
         this.guestName.push(this.newNameText);
         this.newNameText = "";
-        this.eventCapacityPercentage = this.guestName.length / (this.eventCapacity / 100);
+        this.eventCapacityPercentage =
+          this.guestName.length / (this.eventCapacity / 100);
       }
+    },
+  },
+  computed: {
+    sortNames: function () {
+      return this.guestName.sort();
     },
   },
 });
