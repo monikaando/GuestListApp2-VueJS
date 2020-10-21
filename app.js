@@ -27,4 +27,9 @@ new Vue({
       return this.guestName.sort();
     },
   },
+  watch: {
+    guestName: function(data){
+      console.log('Watch trigerred')
+    }
+  }
 });
