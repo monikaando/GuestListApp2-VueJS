@@ -21,9 +21,9 @@ new Vue({
           this.guestName.length / (this.eventCapacity / 100);
       }
     },
-    keyPressed: function() {
-      console.log('key pressed')
-    }
+    keyPressed: function () {
+      console.log("key pressed");
+    },
   },
   computed: {
     sortNames: function () {
@@ -31,13 +31,20 @@ new Vue({
     },
   },
   watch: {
-    guestName: function(data){
-      console.log('Watch trigerred')
-    }
+    guestName: function (data) {
+      console.log("Watch trigerred");
+    },
   },
   filters: {
-    formatName: function(value){
-      return value.slice(0,1).toUpperCase() + value.slice(1).toLowerCase()
-    }
-  }
+    formatName: function (value) {
+      return value.slice(0, 1).toUpperCase() + value.slice(1).toLowerCase();
+    },
+  },
+});
+
+new Vue({
+  el: "#navigation",
+  data: {
+    appName: "Guest List",
+  },
 });
