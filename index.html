@@ -1,38 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Guest List</title>
-  <script src="https://unpkg.com/vue@2.6.12"></script>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
-  <link rel="stylesheet" href="app.css">
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Guest List</title>
+    <script src="https://unpkg.com/vue@2.6.12"></script>
+    <link rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
+      integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ"
+      crossorigin="anonymous">
+    <link rel="stylesheet" href="app.css">
+  </head>
+  <body>
 
-  <div id="app">
-    <div class="container">
+    <div id="app">
+      <div class="container">
 
-      <div class="row">
-        <div class="col-sm-12 text-center">
-          <h1>Guest List</h1>
+        <div class="row">
+          <div class="col-sm-12 text-center">
+            <h1>Guest List</h1>
+          </div>
         </div>
-      </div>
 
-      <div class="row">
-        <div class="col-sm-12">
-          <div class="card">
-            <div class="card-header">
-              {{event.eventDate}}
-            </div>
-            <div class="card-block">
-              <h4 class="card-title">{{event.eventTitle}}</h4><hr>
-              <p class="card-text">{{event.eventDescription}}</p>
-              <p class="card-text">Add your name to the guest list for exclusive offers:</p>
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="card">
+              <div class="card-header">
+                {{event.eventDate}}
+              </div>
+              <div class="card-block">
+                <h4 class="card-title">{{event.eventTitle}}</h4><hr>
+                <p class="card-text">{{event.eventDescription}}</p>
+                <p class="card-text">Add your name to the guest list for
+                  exclusive offers:</p>
                 <form class="form-inline" @submit.prevent="formSubmitted">
-                <input type="text" id="nameInput" class="form-control mb-2 mr-sm-2 mb-sm-0" placeholder="Jane Doe" v-model="newNameText">
-                <input type="submit"  class="btn btn-primary" ></input>
+                  <input 
+                  type="text" 
+                  id="nameInput" 
+                  class="form-control mb-2 mr-sm-2 mb-sm-0" 
+                  placeholder="Jane Doe"
+                  v-model="newNameText" 
+                  @keyup.space = "keyPressed">
+                  <input type="submit" class="btn btn-primary"></input>
 
               </form>
               {{newNameText}}
@@ -47,25 +57,26 @@
             <div class="card-header">
               Attending ({{guestName.length}} / {{eventCapacity}})
               <br/>
-              <progress :style="{width: eventCapacityPercentage + '%'}"></progress>
-            </div>
-            <div class="card-block">
-              <div v-if="guestName.length > 0">
-                <div class="card-success rounded name-box"  v-for="name in sortNames">
-                 {{name}}
+                <progress :style="{width: eventCapacityPercentage + '%'}"></progress>
+              </div>
+              <div class="card-block">
+                <div v-if="guestName.length> 0">
+                  <div class="card-success rounded name-box" v-for="name in
+                    sortNames">
+                    {{name}}
+                  </div>
+                </div>
+                <div v-else>
+                  <h4>No names added yet...</h4>
                 </div>
               </div>
-              <div v-else>
-                <h4>No names added yet...</h4>
-              </div>
             </div>
-          </div>
 
+          </div>
         </div>
       </div>
     </div>
-  </div>
 
-<script src="app.js"></script>
-</body>
+    <script src="app.js"></script>
+  </body>
 </html>

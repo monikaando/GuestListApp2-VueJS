@@ -21,6 +21,9 @@ new Vue({
           this.guestName.length / (this.eventCapacity / 100);
       }
     },
+    keyPressed: function() {
+      console.log('key pressed')
+    }
   },
   computed: {
     sortNames: function () {
